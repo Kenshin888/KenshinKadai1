@@ -13,8 +13,8 @@ struct ContentView: View {
     @State var input3 = ""
     @State var input4 = ""
     @State var input5 = ""
-
     @State var sum5: Int? = nil
+
     var body: some View {
         VStack {
             HStack{
@@ -59,17 +59,7 @@ struct ContentView: View {
             }
             HStack{
                 Button{
-                    if let n1 = Int(input1),let n2 = Int(input2),let n3 = Int(input3),let n4 = Int(input4),let n5 = Int(input5){
-                        self.sum5 = n1 + n2 + n3 + n4 + n5
-                    }else if let n1 = Int(input1),let n2 = Int(input2),let n3 = Int(input3),let n4 = Int(input4){
-                        self.sum5 = n1 + n2 + n3 + n4
-                    }else if let n1 = Int(input1),let n2 = Int(input2),let n3 = Int(input3){
-                        self.sum5 = n1 + n2 + n3
-                    }else if let n1 = Int(input1),let n2 = Int(input2){
-                        self.sum5 = n1 + n2
-                    }else{
-                        self.sum5 = nil
-                    }
+                   sum5 = [Int(input1),Int(input2),Int(input3),Int(input4),Int(input5)].compactMap{$0}.reduce(0,+)
                 }label: {
                     Text("sum")
                 }
@@ -79,7 +69,6 @@ struct ContentView: View {
             }else{
                 Text("値が入っていません")
             }
-
 
             Spacer()
         }//VStack
